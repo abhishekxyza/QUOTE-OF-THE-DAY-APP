@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Spark — Inspiring Quotes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="logo-area">
+                <h1 id="app-logo">Daily Spark</h1>
+                <span class="tagline">Your Daily Inspiration</span>
+            </div>
+            
+            <nav class="navigation">
+                <button id="nav-dashboard" class="nav-btn active">
+                    <span class="icon">🏠</span> Dashboard
+                </button>
+                <button id="nav-favorites" class="nav-btn">
+                    <span class="icon">★</span> Favorites
+                </button>
+            </nav>
+
+            <footer class="sidebar-footer">
+                <span id="version-text">v1.0.0</span>
+            </footer>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view-section active">
+                <header class="section-header">
+                    <h2>Quote of the Day</h2>
+                    <span id="quote-category" class="category-badge">Inspiration</span>
+                </header>
+
+                <div class="quote-card-container">
+                    <div class="quote-card" id="main-quote-card">
+                        <div class="quote-quote-icon">“</div>
+                        <blockquote id="quote-text" class="quote-text">Loading your daily inspiration...</blockquote>
+                        <cite id="quote-author" class="quote-author">— Loading</cite>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button id="btn-favorite" class="btn secondary">
+                        <span id="fav-icon">☆</span> <span id="fav-text">Favorite</span>
+                    </button>
+                    <button id="btn-share" class="btn primary">
+                        <span class="icon">🔗</span> Share / Copy
+                    </button>
+                    <button id="btn-refresh" class="btn secondary">
+                        <span class="icon">🔄</span> Refresh Quote
+                    </button>
+                </div>
+            </section>
+
+            <!-- Favorites View -->
+            <section id="view-favorites" class="view-section">
+                <header class="section-header">
+                    <h2>Your Saved Favorites</h2>
+                </header>
+                <div id="favorites-list" class="favorites-list">
+                    <!-- Dynamic Favorites items will go here -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Floating Toast Notification -->
+    <div id="toast" class="toast">Quote copied to clipboard!</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
