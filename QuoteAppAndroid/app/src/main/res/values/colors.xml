@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Design System Colors -->
+    <color name="color_bg">#121218</color>
+    <color name="color_sidebar">#1A1A24</color>
+    <color name="color_card_start">#4A00E0</color>
+    <color name="color_card_end">#8E2DE2</color>
+    <color name="color_text_primary">#F5F5FA</color>
+    <color name="color_text_muted">#AAAABE</color>
+    <color name="color_accent">#FF4B4B</color>
+    <color name="color_button_bg">#282837</color>
+    <color name="color_nav_active">#4A00E0</color>
+</resources>
