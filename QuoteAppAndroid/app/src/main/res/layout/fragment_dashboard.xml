@@ -4,47 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground"
-    android:padding="24dp">
+    android:background="@color/color_bg"
+    android:padding="20dp">
 
     <TextView
         android:id="@+id/text_dashboard_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/quote_of_the_day"
-        android:textColor="?attr/colorOnBackground"
-        android:textSize="24sp"
+        android:textColor="@color/color_text_primary"
+        android:textSize="28sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/text_category"
-        android:layout_width="wrap_content"
+    <HorizontalScrollView
+        android:id="@+id/scroll_categories"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Inspiration"
-        android:textColor="@color/color_text_muted"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        android:padding="6dp"
-        android:background="@drawable/bg_category"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/text_dashboard_title"
-        app:layout_constraintBottom_toBottomOf="@id/text_dashboard_title" />
+        android:layout_marginTop="16dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/text_dashboard_title">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true"
+            app:singleSelection="true">
+            <!-- Chips will be added dynamically -->
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_quote"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:cardCornerRadius="20dp"
-        app:cardElevation="8dp"
+        android:layout_marginTop="24dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_dashboard_title">
+        app:layout_constraintTop_toBottomOf="@id/scroll_categories">
 
         <LinearLayout
-            android:id="@+id/quote_gradient_bg"
+            android:id="@+id/quote_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_gradient_card"
@@ -52,20 +56,35 @@
             android:padding="32dp">
 
             <TextView
+                android:id="@+id/text_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_category"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:text="Inspiration"
+                android:textColor="@color/color_accent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/text_quote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
                 android:gravity="center"
-                android:text="Loading..."
+                android:lineSpacingExtra="4dp"
+                android:text="Loading your daily spark..."
                 android:textColor="@android:color/white"
-                android:textSize="22sp"
+                android:textSize="24sp"
                 android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/text_author"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="32dp"
                 android:gravity="end"
                 android:text="— System"
                 android:textColor="@android:color/white"
@@ -74,44 +93,47 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_refresh"
+        style="@style/Widget.Material3.Button.TonalButton"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="32dp"
+        android:text="Refresh Spark"
+        android:textSize="16sp"
+        app:cornerRadius="16dp"
+        app:icon="@android:drawable/ic_menu_rotate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/card_quote" />
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:gravity="center"
+        android:layout_marginTop="16dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/card_quote">
+        app:layout_constraintTop_toBottomOf="@id/btn_refresh">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_favorite"
-            android:layout_width="wrap_content"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/color_button_bg"
-            android:text="@string/favorite"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground" />
+            android:layout_weight="1"
+            android:text="Favorite"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/btn_star" />
 
-        <Button
-            android:id="@+id/btn_share"
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:backgroundTint="@color/color_button_bg"
-            android:text="@string/share"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground" />
-
-        <Button
-            android:id="@+id/btn_refresh"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/color_button_bg"
-            android:text="@string/refresh"
-            android:textAllCaps="false"
-            android:textColor="?attr/colorOnBackground" />
+            android:layout_weight="1"
+            android:text="Export"
+            app:cornerRadius="12dp"
+            app:icon="@android:drawable/ic_menu_gallery" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

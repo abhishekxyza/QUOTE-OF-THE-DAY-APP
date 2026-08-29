@@ -47,6 +47,10 @@ dependencies {
   implementation(libs.material)
   implementation(libs.androidx.constraintlayout)
 
+  // Advanced features
+  implementation(libs.androidx.work.runtime)
+  implementation(libs.lottie)
+
   // Local tests
   testImplementation(libs.junit)
 
